@@ -2,6 +2,10 @@ const express = require('express');
 
 const app = express();
 
-app.listen(3000, '/', (req, res) => {
-    res.send('You are listenning to port 3000');
+app.get('/', (req, res) => {
+    res.send('this is working');
+});
+
+app.listen(3000, () => {
+    console.log('You are listenning to port 3000');
 });
