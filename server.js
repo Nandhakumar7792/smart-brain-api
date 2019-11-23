@@ -50,6 +50,21 @@ app.post('/register', (req, res) => {
         joined: new Date()
     });
     res.json(database.users[database.users.length-1]);
+});
+
+app.get('/profile/:id', (req, res) => {
+    const { id } = req.params;
+    const user = database.users.filter(user => {
+        if(user.id === id) {
+            return user;
+        }
+    });
+    if (user[0]) {
+        res.json(user[0]);
+    } else {
+        res.status(404).json('No such user');
+    }
+    
 })
 
 app.listen(3000, () => {
