@@ -64,7 +64,21 @@ app.get('/profile/:id', (req, res) => {
     } else {
         res.status(404).json('No such user');
     }
-    
+});
+
+app.put('/image', (req, res) => {
+    const { id } = req.body;
+    const user = database.users.filter(user => {
+        if(user.id === id) {
+            user.entries++;
+            return user;
+        }
+    });
+    if (user[0]) {
+        res.json(user[0].entries);
+    } else {
+        res.status(404).json('No such user');
+    }
 })
 
 app.listen(3000, () => {
