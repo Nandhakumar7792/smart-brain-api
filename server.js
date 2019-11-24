@@ -1,8 +1,13 @@
 const express = require('express');
+//bcrypt
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+const cors = require('cors');
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 const database = {
     users: [
@@ -41,6 +46,10 @@ app.post('/signin', (req, res) => {
 
 app.post('/register', (req, res) => {
     const { email, name, password } = req.body;
+    // bcrypt.hash(password, saltRounds, function(err, hash) {
+    //     console.log(hash);
+    // });
+
     database.users.push({
         id: '125',
         name: name,
@@ -79,7 +88,15 @@ app.put('/image', (req, res) => {
     } else {
         res.status(404).json('No such user');
     }
-})
+});
+
+// // Load hash from your password DB.
+// bcrypt.compare(myPlaintextPassword, hash, function(err, res) {
+//     // res == true
+// });
+// bcrypt.compare(someOtherPlaintextPassword, hash, function(err, res) {
+//     // res == false
+// });
 
 app.listen(3000, () => {
     console.log('You are listenning to port 3000');

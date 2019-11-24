@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/Nandhakumar7792/smart-brain-api#readme",
   "dependencies": {
+    "bcrypt": "^3.0.7",
+    "cors": "^2.8.5",
     "express": "^4.17.1"
   },
   "devDependencies": {
