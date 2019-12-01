@@ -30,7 +30,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/', (req, res) => {
-    res.send(database.users);
+    res.send(`it's working`);
 });
 
 app.post('/signin', signin.handleSignin(db, bcrypt, saltRounds)); //Advanced concept re, res is passed directly we don't need to pass it
