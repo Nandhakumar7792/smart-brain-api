@@ -58,6 +58,6 @@ app.post('/imageurl', (req, res) => {
 //     // res == false
 // });
 
-app.listen(3000, () => {
-    console.log('You are listenning to port 3000');
+app.listen(process.env.PORT || 3000, () => {
+    console.log('You are listenning to port ${process.env.PORT}');
 });
